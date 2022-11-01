@@ -28,25 +28,46 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.richTextBoxUserInput = new System.Windows.Forms.RichTextBox();
+            this.richTextBoxBotOutput = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
+            // 
+            // richTextBoxUserInput
+            // 
+            this.richTextBoxUserInput.Location = new System.Drawing.Point(76, 39);
+            this.richTextBoxUserInput.Name = "richTextBoxUserInput";
+            this.richTextBoxUserInput.Size = new System.Drawing.Size(355, 98);
+            this.richTextBoxUserInput.TabIndex = 0;
+            this.richTextBoxUserInput.Text = "";
+            // 
+            // richTextBoxBotOutput
+            // 
+            this.richTextBoxBotOutput.Location = new System.Drawing.Point(76, 230);
+            this.richTextBoxBotOutput.Name = "richTextBoxBotOutput";
+            this.richTextBoxBotOutput.Size = new System.Drawing.Size(355, 98);
+            this.richTextBoxBotOutput.TabIndex = 1;
+            this.richTextBoxBotOutput.Text = "";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(504, 452);
+            this.Controls.Add(this.richTextBoxBotOutput);
+            this.Controls.Add(this.richTextBoxUserInput);
             this.DoubleBuffered = true;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Chatty";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private RichTextBox richTextBoxUserInput;
+        private RichTextBox richTextBoxBotOutput;
     }
 }
