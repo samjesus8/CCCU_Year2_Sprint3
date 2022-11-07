@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Drawing.Text;
 using System.Linq;
 using System.Net;
 using System.Security.Policy;
@@ -15,6 +16,8 @@ namespace Chatbot
     /// </summary>
     internal class keywordChecker
     {
+        private WebClient client;
+
         public DateTime convertDateTime(long sec) // Converts seconds to DateTime.
         {
             DateTime currentTime = DateTime.Now;
@@ -58,46 +61,19 @@ namespace Chatbot
             }
         }
 
-        public WordOfDay.word GetWord() // gets the current word of the day using the API
+        /// <summary>
+        /// Methods that retruns a word of the day using the API
+        /// </summary>
+        /// <returns></returns>
+        public string GetWord() 
         {
-            WordOfDay.word word;
+            string word; 
+            WebClient client;
 
-            word = new WordOfDay.word();
+            client = new WebClient();
+            word = client.DownloadString("https://random-word-api.herokuapp.com/word");
 
-            var client = new HttpClient();
-            var request = new HttpRequestMessage
-            {
-                Method = HttpMethod.Get,
-                RequestUri = new Uri("https://word-of-the-day2.p.rapidapi.com/word/today"),
-            };
-                     
-            return word;
-
-            ///<summary>
-            /// below is the code from the APi website but I am unsure how to implement it. There's no tutorials really on how to code this that I can find. 
-            /// above have based it on the code for the weather. 
-            /// To do more research
-            /// </summary>
-
-            /*
-             * var client = new HttpClient();
-               var request = new HttpRequestMessage
-            {
-	               Method = HttpMethod.Get,
-	               RequestUri = new Uri("https://word-of-the-day2.p.rapidapi.com/word/today"),
-	              Headers =
-	                {
-		                { "X-RapidAPI-Key", "e849bcc6aemsh88ac2ae09d02290p196cf4jsn3f93c10f3361" },
-		                { "X-RapidAPI-Host", "word-of-the-day2.p.rapidapi.com" },
-	                },
-            };
-                using (var response = await client.SendAsync(request))
-              {
-	                  response.EnsureSuccessStatusCode();
-	                   var body = await response.Content.ReadAsStringAsync();
-	              Console.WriteLine(body);
-                  }
-            */
+            return word; 
             
         }
 
@@ -105,16 +81,17 @@ namespace Chatbot
         {
             if (input.ToLower().Contains("word of the day")) // of user asks this this will be outputted
             {
-                outputBox.Text = "The word of the day is: " + GetWord().wordText + "\r\nDefinition: " + GetWord().wordDefinition; 
+                outputBox.Text = "The word of the day is: " + GetWord();
             }
             else if (input.ToLower().Contains("wotd"))
             {
-                outputBox.Text = "The word of the day is: " + GetWord().wordText + "\r\nDefinition: " + GetWord().wordDefinition;
+                outputBox.Text = "The word of the day is: " + GetWord();
             }
             else if (input.ToLower().Contains("Todays word"))
             {
-                outputBox.Text = "The word of the day is: " + GetWord().wordText + "\r\nDefinition: " + GetWord().wordDefinition;
+                outputBox.Text = "The word of the day is: " + GetWord();
             }
+         
         }
     }
 }

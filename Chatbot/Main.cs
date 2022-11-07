@@ -22,12 +22,10 @@ namespace Chatbot
             keywordChecker KWC = new keywordChecker();
 
             KWC.WeatherInput(inputBox.Text, outputBox);
-            //Example input
-            if (inputBox.Text.ToLower().Contains("date")) 
-            {
-                string output = "The date today is " + DateTime.Now;
-                outputBox.Text = output;
-            }
+            
+            KWC.WOTDInput(inputBox.Text, outputBox);
+
+
         }
     }
 }
