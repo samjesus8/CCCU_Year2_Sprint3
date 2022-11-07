@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chatbot.Music;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,6 +28,15 @@ namespace Chatbot
             {
                 string output = "The date today is " + DateTime.Now;
                 outputBox.Text = output;
+            }
+
+            else if (inputBox.Text.ToLower().Contains("play")) 
+            {
+                outputBox.Text = "Opening Media Player...";
+
+                var mediaPlayer = new MusicPlayer();
+                mediaPlayer.Show();
+                mediaPlayer.Input = inputBox.Text.ToString();
             }
         }
     }

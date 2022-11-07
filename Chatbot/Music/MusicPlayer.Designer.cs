@@ -51,9 +51,10 @@
             // nowPlayingBox
             // 
             this.nowPlayingBox.Location = new System.Drawing.Point(12, 84);
+            this.nowPlayingBox.Multiline = true;
             this.nowPlayingBox.Name = "nowPlayingBox";
             this.nowPlayingBox.ReadOnly = true;
-            this.nowPlayingBox.Size = new System.Drawing.Size(477, 23);
+            this.nowPlayingBox.Size = new System.Drawing.Size(477, 79);
             this.nowPlayingBox.TabIndex = 1;
             // 
             // label2
@@ -67,7 +68,7 @@
             // 
             // playButton
             // 
-            this.playButton.Location = new System.Drawing.Point(115, 127);
+            this.playButton.Location = new System.Drawing.Point(115, 169);
             this.playButton.Name = "playButton";
             this.playButton.Size = new System.Drawing.Size(61, 45);
             this.playButton.TabIndex = 3;
@@ -77,7 +78,7 @@
             // 
             // pauseButton
             // 
-            this.pauseButton.Location = new System.Drawing.Point(184, 127);
+            this.pauseButton.Location = new System.Drawing.Point(184, 169);
             this.pauseButton.Name = "pauseButton";
             this.pauseButton.Size = new System.Drawing.Size(61, 45);
             this.pauseButton.TabIndex = 4;
@@ -87,7 +88,7 @@
             // 
             // stopButton
             // 
-            this.stopButton.Location = new System.Drawing.Point(251, 127);
+            this.stopButton.Location = new System.Drawing.Point(251, 169);
             this.stopButton.Name = "stopButton";
             this.stopButton.Size = new System.Drawing.Size(61, 45);
             this.stopButton.TabIndex = 5;
@@ -97,7 +98,7 @@
             // 
             // loopButton
             // 
-            this.loopButton.Location = new System.Drawing.Point(318, 127);
+            this.loopButton.Location = new System.Drawing.Point(318, 169);
             this.loopButton.Name = "loopButton";
             this.loopButton.Size = new System.Drawing.Size(61, 45);
             this.loopButton.TabIndex = 6;
