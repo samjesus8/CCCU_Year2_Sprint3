@@ -131,6 +131,7 @@
             this.Controls.Add(this.label1);
             this.Name = "MusicPlayer";
             this.Text = "MusicPlayer";
+            this.Load += new System.EventHandler(this.MusicPlayer_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

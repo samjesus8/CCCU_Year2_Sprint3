@@ -1,19 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Media;
-
-namespace Chatbot.Music
+﻿namespace Chatbot.Music
 {
     public partial class MusicPlayer : Form
     {
         public string Input { get; set; }
+        Client _client = new Client();
 
         public MusicPlayer()
         {
@@ -22,30 +12,36 @@ namespace Chatbot.Music
 
         private async void playButton_Click(object sender, EventArgs e)
         {
-            var client = new Client();
-            string[] URL = Input.Split(" ");
-            await client.GetVideoDetails(URL[1]);
 
-            string NowPlaying = "Name - " + client.Title.ToString() + "\r\n" +
-                                "Channel - " + client.ChannelName.ToString() + "\r\n" +
-                                "Duration - " + client.Duration.ToString() + "\r\n";
+        }
+
+        private async void pauseButton_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private async void stopButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void loopButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private async void MusicPlayer_Load(object sender, EventArgs e)
+        {
+            string[] URL = Input.Split(" ");
+            await _client.GetVideoDetails(URL[1]); //FOR NOW WHEN USING THIS MUSIC PLAYER PLEASE PUT "play VIDEOURL" AND HIT SEND
+            _client.DownloadAudio(URL[1]);
+
+            string NowPlaying = "Name - " + _client.Title.ToString() + "\r\n" +
+                                "Channel - " + _client.ChannelName.ToString() + "\r\n" +
+                                "Duration - " + _client.Duration.ToString() + "\r\n" +
+                                "Release Date - " + _client.ReleaseDate.ToString();
 
             nowPlayingBox.Text = NowPlaying;
-        }
-
-        private void pauseButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void stopButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void loopButton_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

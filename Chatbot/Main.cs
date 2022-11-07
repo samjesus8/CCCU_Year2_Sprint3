@@ -35,8 +35,8 @@ namespace Chatbot
                 outputBox.Text = "Opening Media Player...";
 
                 var mediaPlayer = new MusicPlayer();
+                mediaPlayer.Input = inputBox.Text.ToString(); //Get the URL from the user before loading the form
                 mediaPlayer.Show();
-                mediaPlayer.Input = inputBox.Text.ToString();
             }
         }
     }
