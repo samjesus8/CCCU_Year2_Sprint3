@@ -1,4 +1,4 @@
-﻿using Chatbot.Music;
+using Chatbot.Music;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -23,6 +23,7 @@ namespace Chatbot
             keywordChecker KWC = new keywordChecker();
 
             KWC.WeatherInput(inputBox.Text, outputBox);
+
             //Example input
             if (inputBox.Text.ToLower().Contains("date")) 
             {
@@ -38,6 +39,8 @@ namespace Chatbot
                 mediaPlayer.Input = inputBox.Text.ToString(); //Get the URL from the user before loading the form
                 mediaPlayer.Show();
             }
+            
+            KWC.WOTDInput(inputBox.Text, outputBox);
         }
     }
 }

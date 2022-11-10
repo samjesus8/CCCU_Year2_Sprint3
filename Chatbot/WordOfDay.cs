@@ -11,7 +11,7 @@ namespace Chatbot
         public class word
         {
             public string wordText { get; set; }
-            public string wordDefinition { get; set; }
+           
         }
     }
 }
