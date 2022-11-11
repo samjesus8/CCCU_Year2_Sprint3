@@ -70,6 +70,7 @@
             this.outputBox.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.outputBox.Multiline = true;
             this.outputBox.Name = "outputBox";
+            this.outputBox.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.outputBox.Size = new System.Drawing.Size(350, 158);
             this.outputBox.TabIndex = 3;
             // 
@@ -92,7 +93,13 @@
             "Sunset",
             "Sunrise",
             "Wind",
-            "Date "});
+            "Date ",
+            "WOTD",
+            "word of the day",
+            "play URL",
+            "bank holiday",
+            "bank holidays",
+            "bank holidays + next year"});
             this.comboBox1.Location = new System.Drawing.Point(239, 7);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 23);

@@ -93,5 +93,50 @@ namespace Chatbot
             }
          
         }
+        /// <summary>
+        /// Method that will return the Bank holidays for a certain year.
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="outputBox"></param>
+        public void BankHolidayInput(string input, TextBox outputBox)
+        {
+            HolidayController HC = new HolidayController();
+
+            if (input.ToLower().Contains("bank holidays") && input.ToLower().Contains("next year")) // Will return the bank holidays for the next year not the current year
+            {
+                string output = "";
+
+                foreach (HolidayDetails HD in HC.GetPublicHolidays((DateTime.Now.Year + 1).ToString())) // Loop to add all holidays to an output string.
+                {
+                    output = output + "Date - " + HD.date.ToString("dd/MM/yyyy") + " | Name - " + HD.name + " \r\n";
+                }
+
+                outputBox.Text = output;
+            }
+            else if (input.ToLower().Contains("bank holiday")) // Will return all the bank holidays for the current year.
+            {
+                string output = "";
+
+                foreach (HolidayDetails HD in HC.GetPublicHolidays(DateTime.Now.Year.ToString()))
+                {
+                    output = output + "Date - " + HD.date.ToString("dd/MM/yyyy") + " | Name - " + HD.name + "\r\n";
+                }
+
+                outputBox.Text = output;
+            }
+            else if (input.ToLower().Contains("bank holidays"))
+            {
+                string output = "";
+
+                foreach (HolidayDetails HD in HC.GetPublicHolidays(DateTime.Now.Year.ToString()))
+                {
+                    output = output + "Date - " + HD.date.ToString("dd/MM/yyyy") + " | Name - " + HD.name + " \r\n";
+                }
+
+                outputBox.Text = output;
+            }
+
+
+        }
     }
 }

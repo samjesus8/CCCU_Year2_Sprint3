@@ -41,6 +41,8 @@ namespace Chatbot
             }
             
             KWC.WOTDInput(inputBox.Text, outputBox);
+
+            KWC.BankHolidayInput(inputBox.Text, outputBox);
         }
     }
 }
