@@ -113,7 +113,7 @@ namespace Chatbot
 
                 outputBox.Text = output;
             }
-            else if (input.ToLower().Contains("bank holiday")) // Will return all the bank holidays for the current year.
+            else if (input.ToLower().Contains("bank holiday")) // Will return all the bank holidays for the current year..
             {
                 string output = "";
 
