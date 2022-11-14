@@ -1,12 +1,15 @@
-﻿using Newtonsoft.Json;
+﻿using AngleSharp.Html.Dom;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Drawing.Text;
 using System.Linq;
 using System.Net;
+using System.Reflection.Metadata.Ecma335;
 using System.Security.Policy;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 
 namespace Chatbot
 {
@@ -79,7 +82,7 @@ namespace Chatbot
 
         public void WOTDInput(string input, TextBox outputBox)
         {
-            if (input.ToLower().Contains("word of the day")) // of user asks this this will be outputted
+            if (input.ToLower().Contains("word of the day")) // if user asks this this will be outputted
             {
                 outputBox.Text = "The word of the day is: " + GetWord();
             }
@@ -135,8 +138,51 @@ namespace Chatbot
 
                 outputBox.Text = output;
             }
-
-
         }
+
+        ///<summary>
+        /// Method(s) that sets a timer 
+        ///</summary>
+        ///
+        private static System.Timers.Timer botTimer;
+       
+        
+        public string SetTimer(int timer)
+        {
+            botTimer = new System.Timers.Timer(timer);
+            int newtimer = timer * 1000;
+
+            if (timer !=0) botTimer.Interval = newtimer;
+            botTimer.Enabled = true;
+            botTimer.Start();
+            botTimer.Elapsed += async (sender, e) => await TimerEnded();
+            
+            botTimer.AutoReset= true;
+            return timer.ToString();
+
+         }
+        private static Task TimerEnded()
+        {
+            botTimer.Stop();
+            MessageBox.Show("Timer Ended");
+            return Task.CompletedTask;
+        }
+
+       
+
+        public void TimerInput(string input, TextBox outputBox)
+            
+        {
+            int timer;
+            string t  = new string (input.Where(char.IsDigit).ToArray());
+            bool containsInt = int.TryParse(t, out timer);
+                       
+
+            if (input.ToLower().Contains("set timer"))
+            {
+                outputBox.Text = "Timer set for: " + SetTimer(timer);
+            }
+        }
+        
     }
 }
