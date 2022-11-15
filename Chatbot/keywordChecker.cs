@@ -140,47 +140,26 @@ namespace Chatbot
             }
         }
 
-        ///<summary>
-        /// Method(s) that sets a timer 
-        ///</summary>
-        ///
-        private static System.Timers.Timer botTimer;
-       
         
-        public string SetTimer(int timer)
-        {
-            botTimer = new System.Timers.Timer(timer);
-            int newtimer = timer * 1000;
-
-            if (timer !=0) botTimer.Interval = newtimer;
-            botTimer.Enabled = true;
-            botTimer.Start();
-            botTimer.Elapsed += async (sender, e) => await TimerEnded();
-            
-            botTimer.AutoReset= true;
-            return timer.ToString();
-
-         }
-        private static Task TimerEnded()
-        {
-            botTimer.Stop();
-            MessageBox.Show("Timer Ended");
-            return Task.CompletedTask;
-        }
-
-       
+       /// <summary>
+       /// Method that sets a timer
+       /// </summary>
+       /// <param name="input"></param>
+       /// <param name="outputBox"></param>
 
         public void TimerInput(string input, TextBox outputBox)
             
         {
+            TimerClass timer1 = new TimerClass(); //creates timer object
+
             int timer;
-            string t  = new string (input.Where(char.IsDigit).ToArray());
-            bool containsInt = int.TryParse(t, out timer);
+            string t  = new string (input.Where(char.IsDigit).ToArray()); // checks if input has a digit 
+            bool containsInt = int.TryParse(t, out timer); // outputs the digit as the timer
                        
 
             if (input.ToLower().Contains("set timer"))
             {
-                outputBox.Text = "Timer set for: " + SetTimer(timer);
+                outputBox.Text = "Timer set for: " + timer1.SetTimer(timer);
             }
         }
         
